@@ -1,13 +1,17 @@
-# Yearn Keeper Scripts
+# Grizzly Keeper Scripts
 
-This repository enables keepers of the Keep3r Network to execute Yearn's jobs on Ethereum.
+This repository enables keepers of the Keep3r Network to execute Grizzly's job on Ethereum.
+
+Grizzly job consist of autocompounding tx for our ETH strategies.
+
+The list of strategies can be found on the `strategies` method in the `HarvestV2KeeperJob` Contract.
 
 ## How to run
 
 1. Clone the repository
 
 ```
-  git clone https://github.com/yearn/keeper-scripts
+  git clone https://github.com/borus-dev/grizzly-keeper-scripts
 ```
 
 2. Install dependencies
