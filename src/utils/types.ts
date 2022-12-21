@@ -1,5 +1,5 @@
-import type {BlockListener, Flashbots, UnsubscribeFunction} from '@keep3r-network/keeper-scripting-utils';
-import type {BigNumber, Contract, providers, Wallet} from 'ethers';
+import type { BlockListener, Flashbots, UnsubscribeFunction } from '@keep3r-network/keeper-scripting-utils';
+import type { BigNumber, Contract, providers, Wallet } from 'ethers';
 
 export type Address = string;
 export type LastWorkAtMap = Record<string, BigNumber>;
@@ -39,11 +39,6 @@ export type TryToWorkTendProps = {
   workFunction: string;
 } & BaseTryToWorkProps;
 
-export type TryToWorkHarvestProps = {
-  stealthRelayer: Contract;
-  workData: WorkDataMap;
-} & BaseTryToWorkProps;
-
 export type BaseRunProps = {
   flashbots: Flashbots;
   job: Contract;
@@ -54,9 +49,4 @@ export type BaseRunProps = {
 export type TendRunProps = {
   tryToWorkFunc: (props: TryToWorkTendProps) => void;
   workFunction: string;
-} & BaseRunProps;
-
-export type HarvestRunProps = {
-  stealthRelayer: Contract;
-  tryToWorkFunc: (props: TryToWorkHarvestProps) => void;
 } & BaseRunProps;

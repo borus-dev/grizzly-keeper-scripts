@@ -5,14 +5,14 @@ import {
   populateTransactions,
   sendAndRetryUntilNotWorkable,
 } from '@keep3r-network/keeper-scripting-utils';
-import type {BigNumber, Overrides} from 'ethers';
-import type {TransactionRequest} from '@ethersproject/abstract-provider';
-import {BURST_SIZE, CHAIN_ID, FUTURE_BLOCKS, PRIORITY_FEE} from '../utils/constants';
-import type {TryToWorkTendProps} from '../utils/types';
-import {stopSubscription} from '../utils/misc';
+import type { BigNumber, Overrides } from 'ethers';
+import type { TransactionRequest } from '@ethersproject/abstract-provider';
+import { BURST_SIZE, CHAIN_ID, FUTURE_BLOCKS, PRIORITY_FEE } from '../utils/constants';
+import type { TryToWorkTendProps } from '../utils/types';
+import { stopSubscription } from '../utils/misc';
 
 export function tryToWorkTendStrategy(props: TryToWorkTendProps): void {
-  const {strategy, workFunction, flashbots, unsubscribeStrategy, lastWorkAt, blockListener, strategyWorkInProgress, job, provider, txSigner} =
+  const { strategy, workFunction, flashbots, unsubscribeStrategy, lastWorkAt, blockListener, strategyWorkInProgress, job, provider, txSigner } =
     props;
   console.log('Start Working on strategy:', strategy);
 
@@ -31,11 +31,7 @@ export function tryToWorkTendStrategy(props: TryToWorkTendProps): void {
       try {
         await job.callStatic[workFunction](strategy);
       } catch (error: unknown) {
-        if (
-          error instanceof Error &&
-          !error.message.includes('StrategyNotWorkable()') &&
-          !error.message.includes('V2Keep3rJob::work:not-workable')
-        ) {
+        if (error instanceof Error && !error.message.includes('StrategyNotWorkable()')) {
           console.log(`Failed when attempting to call work statically. Strategy: ${strategy}. Message: ${error.message}. Returning.`);
         }
 
@@ -55,14 +51,14 @@ export function tryToWorkTendStrategy(props: TryToWorkTendProps): void {
 
         const blocksAhead = FUTURE_BLOCKS + BURST_SIZE;
 
-        const {priorityFeeInGwei, maxFeePerGas} = getMainnetGasType2Parameters({
+        const { priorityFeeInGwei, maxFeePerGas } = getMainnetGasType2Parameters({
           block,
           blocksAhead,
           priorityFeeInWei: PRIORITY_FEE,
         });
 
         const options: Overrides = {
-          gasLimit: 1_000_000,
+          gasLimit: 4_000_000,
           nonce: currentNonce,
           maxFeePerGas,
           maxPriorityFeePerGas: priorityFeeInGwei,

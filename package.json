@@ -1,34 +1,30 @@
 {
-  "name": "@yearn/keeper-scripts",
+  "name": "@grizzly/keeper-scripts",
   "version": "0.0.1",
-  "description": "Yearn's keeper script for The Keep3r Network",
+  "description": "Grizzly's keeper script for The Keep3r Network",
   "keywords": [
     "keep3r",
     "job",
     "ethereum",
-    "yearn"
+    "yearn",
+    "grizzly"
   ],
   "license": "MIT",
   "author": "Yearn",
   "contributors": [
     "0xng (https://github.com/0xng)",
     "gotzenx (https://github.com/gotzenx)",
-    "0xGorilla (https://github.com/0xGorilla)"
+    "0xGorilla (https://github.com/0xGorilla)",
+    "borus-dev (https://github.com/borus-dev)"
   ],
   "private": true,
   "scripts": {
     "postinstall": "eth-sdk",
-    "start:harvest-v2": "ts-node src/harvest-v2-keep3r-v2.ts",
-    "start:harvest": "ts-node src/harvest-v2",
-    "start:tend-keep3r-v2": "ts-node src/tend-v2-keep3r-v2.ts",
-    "start:tend-beta": "ts-node src/tend-v2-beta.ts",
-    "start:tend": "ts-node src/tend-v2.ts",
+    "start:harvest": "ts-node src/grizzly-keep3r.ts",
+    "start:grizzly-keep3r": "ts-node src/grizzly-keep3r.ts",
     "build": "eth-sdk && tsc",
-    "prod:harvest-v2": "node dist/src/harvest-v2.js",
-    "prod:harvest": "node dist/src/harvest.js",
-    "prod:tend-keep3r-v2": "node dist/src/tend-keep3r-v2.js",
-    "prod:tend-beta": "node dist/src/tend-beta.js",
-    "prod:tend": "node dist/src/tend.js",
+    "prod:harvest": "node dist/src/grizzly-keep3r.js",
+    "prod:grizzly-keep3r": "node dist/src/grizzly-keep3r.js",
     "lint": "xo",
     "lint:fix": "xo --fix"
   },
